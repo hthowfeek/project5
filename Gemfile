@@ -6,13 +6,13 @@ gem 'bootstrap-sass'
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 
-	gem 'sqlite3'
+
 	gem 'gravatar_image_tag'
 	gem 'will_paginate'
 	gem 'bootstrap-will_paginate'
 
 group :development do
-
+		gem 'sqlite3'
 	gem 'rspec-rails'
 	gem 'pg'
 	gem 'faker'

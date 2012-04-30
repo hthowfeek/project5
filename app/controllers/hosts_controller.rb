@@ -14,6 +14,7 @@ class HostsController < ApplicationController
   
   def show
 	@host = Host.find(params[:id])
+	@parties = @host.parties.paginate(page: params[:page])
 	@title = @host.first_name, @host.last_name
   end
   

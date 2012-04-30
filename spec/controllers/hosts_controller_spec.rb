@@ -80,6 +80,14 @@ describe "GET 'index'" do
 		response.should have_selector("h1>img", :class => "gravatar")
 	end
 	
+	it "should show the user's microposts" do
+		mp1 = FactoryGirl.create(:party, :host => @host, :name => "Foo bar")
+		mp2 = FactoryGirl.create(:party, :host => @host, :name => "Baz quux")
+		get :show, :id => @host
+		response.should have_selector("span.name", :content => mp1.name)
+		response.should have_selector("span.name", :content => mp2.name)
+	end
+	
   end #end of get show
   
   describe "POST 'create'" do

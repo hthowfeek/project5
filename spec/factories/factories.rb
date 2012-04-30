@@ -9,6 +9,13 @@ FactoryGirl.define do
 	end
 	
 	sequence :email do |n|
-		"person-#{n+1}@cmu.edu"
+		"person-#{n+1}@gtalk.edu"
 	end
+	
+	FactoryGirl.define do
+	  factory :party do
+		name	"Under the sea"
+		association :host
+	  end
+	end  
 end

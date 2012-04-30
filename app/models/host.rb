@@ -3,6 +3,7 @@ class Host < ActiveRecord::Base
 	
 	attr_accessor :password
 	attr_accessible :first_name,:last_name, :email, :username,  :password, :password_confirmation
+	has_many :parties, :dependent => :destroy
 	
 	email_regex = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
 	

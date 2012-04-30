@@ -128,6 +128,28 @@ describe Host do
 	end #end of authenticate password
   end # end of password encryption
   
-  
+  describe "party associations" do
+	before(:each) do
+		@host = Host.create(@attr)
+		@mp1 = FactoryGirl.create(:party, :host => @host, :created_at => 1.day.ago)
+		@mp2 = FactoryGirl.create(:party, :host => @host, :created_at => 1.hour.ago)
+	end
+	
+	it "should have a parties attribute" do
+		@host.should respond_to(:parties)
+	end
+	
+	it "should have the right parties in the right order" do
+		@host.parties.should == [@mp2, @mp1]
+	end
+	
+	it "should destroy associated parties" do
+		@host.destroy
+		[@mp1, @mp2].each do |party|
+			Party.find_by_id(party.id).should be_nil
+		end
+	end
+	
+  end
 
 end #end of describe host
